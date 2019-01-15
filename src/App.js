@@ -4,6 +4,9 @@ import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Event from './components/Event'
+import Home from './components/Home'
+import Nav from './components/Navigator'
+import Events from './components/Events'
 import AddEvent from './components/AddEvent'
 import Whoops404 from './components/Whoops404'
 
@@ -33,9 +36,12 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <Route path="/" component={Nav} />
           <Switch>
-            <Route path="/events" exact component={Event} />
+            <Route exact path="/" component={Home} />
+            <Route path="/events" exact component={Events} />
             <Route path="/events/add" component={AddEvent} />
+            <Route path="/events/:id" component={Event} />
             <Route component={Whoops404} />
           </Switch>
       </div>

@@ -3,13 +3,13 @@ const {Event} = require('../models/Event');
 module.exports = {
     findAll: (req,res)=>{
         Event.find()
-            .populate('eventParticipants')
             .then(eventModel => res.json(eventModel))
             .catch(err => res.status(422).json(err));
     },
     findById: (req,res)=>{
         Event.findById(req.params.id)
             .populate('eventParticipants')
+            .populate('eventMenu')
             .then(eventModel => res.json(eventModel))
             .catch(err => res.status(422).json(err));
     },
@@ -36,7 +36,12 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     addEventMenu: (req,res)=>{
-        Event.findOneAndUpdate({_id: req.params.id}, {'$push': { eventMenu: {...req.body}}})
+        Event.findOneAndUpdate({_id: req.params.id}, {'$push': { eventMenu: {...req.body, vote: 1}}})
+            .then(eventModel => res.json(eventModel))
+            .catch(err => res.status(422).json(err));
+    },
+    addEventMenuVote: (req,res)=>{
+        Event.findOneAndUpdate({_id: req.params.id, "eventMenu._id" : req.body.menuId}, {'$inc': { voteCount: 1}})
             .then(eventModel => res.json(eventModel))
             .catch(err => res.status(422).json(err));
     }

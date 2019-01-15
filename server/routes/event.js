@@ -7,7 +7,7 @@ router.route("/")
 
 router.route("/:id")
     .get(eventController.findById)
-    .post(eventController.update)
+    .put(eventController.update)
     .delete(eventController.remove)
 
 router.route("/addParticipant/:id")
@@ -15,5 +15,8 @@ router.route("/addParticipant/:id")
 
 router.route("/addMenu/:id")
     .post(eventController.addEventMenu)
+
+router.route("/:id/voteMenu")
+    .put(eventController.addEventMenuVote)
 
 module.exports = router;

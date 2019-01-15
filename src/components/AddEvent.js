@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
 
 class AddEvent extends Component {
     constructor(props){
@@ -49,7 +48,7 @@ class AddEvent extends Component {
             <input name="eventLocation" type="text" onChange={this.handleChange} value={this.state.eventLocation}/>   
             </label>
             <label>Event Image Link(if any)
-            <input disabled name="eventImage" type="text" onChange={this.handleChange} value={this.state.eventImage}/>   
+            <input name="eventImage" type="text" onChange={this.handleChange} value={this.state.eventImage}/>   
             </label>
             <button type="submit" onClick={this.handleSubmit}>Submit</button>
         </form>

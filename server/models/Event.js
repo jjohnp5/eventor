@@ -11,7 +11,7 @@ const eventSchema = new Schema({
   eventParticipants: [{
     type: Schema.Types.ObjectId, ref: 'Guest'
   }],
-  eventMenu: [{type: Schema.Types.ObjectId, ref: 'Menu'}],
+  eventMenu: [{menu: {type: Schema.Types.ObjectId, ref: 'Menu'}, voteCount: {type: Schema.Types.Number, default: 0}}],
   addedDate: { type: Date, default: Date.now }
 });
 
