@@ -4,13 +4,17 @@ import React, {Component} from 'react';
 class Nav extends Component {
     render(){
         return(
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+            <ul className="nav justify-content-center">
+                <li className="nav-item">
+                    <a className="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/events">Events</a>
+                <li className="nav-item">
+                    <a className="nav-link" href="/events">Events</a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/guests">Guests</a>
+                </li>
+                
             </ul>
         )
     }

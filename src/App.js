@@ -8,6 +8,9 @@ import Home from './components/Home'
 import Nav from './components/Navigator'
 import Events from './components/Events'
 import AddEvent from './components/AddEvent'
+import Guests from './components/Guests'
+import RegisterGuest from './components/RegisterGuest'
+import AddParticipants from './components/AddParticipants'
 import Whoops404 from './components/Whoops404'
 
 class App extends Component {
@@ -42,8 +45,11 @@ class App extends Component {
             <Route path="/events" exact component={Events} />
             <Route path="/events/add" component={AddEvent} />
             <Route path="/events/:id" component={Event} />
+            <Route exact path="/guests" component={Guests}/>
+            <Route path="/guests/register" component={RegisterGuest}/>
             <Route component={Whoops404} />
           </Switch>
+          <Route path="/events/:id/add/participants" component={AddParticipants}/>
       </div>
       </Router>
     );

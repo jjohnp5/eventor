@@ -6,9 +6,8 @@ const connection = mongoose.createConnection(process.env.MONGODB_URI || "mongodb
 const guestSchema = new Schema({
   guestName: { type: String, required: true },
   guestEmail: {type: String, required: false},
-  guestEvents: [{type: Schema.Types.ObjectId, ref: 'Event'}],
-  guestPasscode: {type: String, required: true},
-  guestMenu: [{
+  guestPasscode: {type: Number, required: true},
+  guestEvents: [{
       eventMenuId: {type: Schema.Types.ObjectId, ref: 'Menu'},
       eventId: {type: Schema.Types.ObjectId, ref: 'Event'}
     }],

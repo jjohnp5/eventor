@@ -6,19 +6,14 @@ class Event extends Component {
         super(props);
         this.state = {
             event: {
-            eventName: 'Test',
-            eventHost: 'TT',
-            eventLocation: 'Ttt ttt',
-            eventImage: '',
-            eventParticipants: [],
-            eventMenu: []
             },
             loading: false
         }
+        this.handleAddParticipant = this.handleAddParticipant.bind(this);
     }
 
     handleAddParticipant(){
-        
+        this.props.history.push(`/events/${this.state.event._id}/add/participants`)
     }
 
     componentDidMount(){
@@ -42,8 +37,8 @@ class Event extends Component {
                 <p>{this.state.event.eventHost}</p>
                 <p>{this.state.event.eventLocation}</p>
                 <p>Menu:</p>
-                <div class="event-menu">
-                    { this.state.event.eventMenu.length > 0 ? this.state.event.eventMenu.map((menu,i)=>{
+                <div className="event-menu">
+                    { this.state.event.eventMenu ? this.state.event.eventMenu.map((menu,i)=>{
                         return (
                             <li key={i}>{menu}</li>
                         )
@@ -51,17 +46,18 @@ class Event extends Component {
                         <p>No menus yet</p>
                         
                     }
-                    <button class="btn btn-primary">Add a menu</button>
+                    
+                    <button className="btn btn-primary">Add a menu</button>
                 </div>
                 <p>Participants:</p>
-                <div class="event-participant">
-                {this.state.event.eventParticipants.length > 0 ? this.state.event.eventParticipants.map((menu,i)=>{
+                <div className="event-participant">
+                {this.state.event.eventParticipants ? this.state.event.eventParticipants.map((menu,i)=>{
                         return (
                             <li key={i}>{menu}</li>
                         )
                     }) : <p>No participants found</p>
                     }
-                    <button class="btn btn-primary" >Add Participant</button>
+                    <button className="btn btn-primary" onClick={this.handleAddParticipant}>Add Participant</button>
                 </div>
                 </div>
 
